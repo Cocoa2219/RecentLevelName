@@ -37,6 +37,7 @@ namespace RecentLevelName
             }
             else
             {
+                PlayerPrefs.SetString("lastOpenedLevelName", string.Empty);
                 _harmony.UnpatchAll();
             }
             return true;
