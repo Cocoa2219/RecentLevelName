@@ -118,11 +118,21 @@ namespace RecentLevelName
     [HarmonyPatch(typeof(LevelData), nameof(LevelData.LoadLevel))]
     public class LevelDataLoadLevelPatch
     {
-        public static string LevelName { get; set; } = null;
+        public static string LevelName
+        {
+            get
+            {
+                var levelName = _levelName;
+                _levelName = null;
+                return levelName;
+            }
+        }
+
+        private static string _levelName;
 
         public static void Postfix(LevelData __instance)
         {
-            LevelName = __instance.song;
+            _levelName = __instance.song;
         }
     }
 }
