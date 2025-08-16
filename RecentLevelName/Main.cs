@@ -96,6 +96,7 @@ namespace RecentLevelName
             }
 
             var levelName = LevelDataLoadLevelPatch.LevelName;
+            LevelDataLoadLevelPatch.LevelName = null;
 
             if (string.IsNullOrEmpty(levelName))
             {
@@ -118,21 +119,11 @@ namespace RecentLevelName
     [HarmonyPatch(typeof(LevelData), nameof(LevelData.LoadLevel))]
     public class LevelDataLoadLevelPatch
     {
-        public static string LevelName
-        {
-            get
-            {
-                var levelName = _levelName;
-                _levelName = null;
-                return levelName;
-            }
-        }
-
-        private static string _levelName;
+        public static string LevelName { get; set; }
 
         public static void Postfix(LevelData __instance)
         {
-            _levelName = __instance.song;
+            LevelName = __instance.song;
         }
     }
 }
