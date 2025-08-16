@@ -1,0 +1,9 @@
+{
+  "Id": "RecentLevelName",
+  "DisplayName": "Recent Level Name",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.22.14.0",
+  "EntryMethod": "RecentLevelName.Main.Initialize",
+  "Author": "Cocoa",
+  "Repository": "https://github.com/Cocoa2219/RecentLevelName"
+}
